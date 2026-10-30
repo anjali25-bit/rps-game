@@ -57,3 +57,9 @@ const computerSelection = getComputerChoice();
 console.log("You chose:", humanSelection);
 console.log("Computer chose:", computerSelection);
 console.log(playRound(humanSelection,computerSelection));
+
+let humanScore = "0";
+let computerScore = "0";
+
+console.log(humanScore);
+console.log(computerScore);
