@@ -8,17 +8,8 @@ const choice = ["rock","paper","scissors"]
 //increase the points by 1 for the winner 
 // make a final statement for the winner of the game
 function playGame () {
-
-//declare the scoring system
 let humanScore = 0;
 let computerScore = 0;
-console.log(humanScore);
-console.log(computerScore);
-
-for (let i=1;i<6;i++) {
-
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
 //function to run each round
 function playRound(humanSelection, computerSelection){
@@ -35,6 +26,14 @@ function playRound(humanSelection, computerSelection){
         return `You Lose! ${computerSelection} beats ${humanSelection}`;
     }
 }
+
+console.log(humanScore);
+console.log(computerScore);
+
+for (let i=1;i<6;i++) {
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
 
 console.log ("Round:", i);
 console.log("You chose:", humanSelection);
