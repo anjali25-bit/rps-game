@@ -15,7 +15,7 @@ const btnRock = document.querySelector(".rock");
 const btnPaper = document.querySelector(".paper");
 const btnScissors = document.querySelector(".scissors");
 const roundResult = document.querySelector(".result")
-
+const checkForWinner = document.querySelector (".h2"); 
 
 btnRock.addEventListener("click", () => {
 playRound('rock',getComputerChoice());
@@ -52,48 +52,32 @@ function playRound(humanSelection, computerSelection){
     }
         roundResult.appendChild(p);
 
-
-console.log(`${humanScore} : ${computerScore}`);
-
-if (roundCount === 5) {
-    gameWinner ();
+    if (roundCount === 5) {
+        gameWinner ();
 }
 }
 //Final score after 5 rounds
 function gameWinner() {
     const h2 = document.createElement("h2");
-    h2.classList.add = ("h2");
 
-    if (humanScore >= 5 || computerScore >= 5) {
-    h2.textContent = (`Game over, you win! ${humanScore} to ${computerScore}`);
+    if (humanScore >= 5) {
+        h2.classList.add("human-won");
+        h2.textContent = (`Game over, you win! Final score: ${humanScore} to ${computerScore}`);
     
     } else if (computerScore >= 5) {        
-    h2.textContent = (`Game over, you lose! ${computerScore} to ${humanScore}`);
+        h2.classList.add("computer-won");
+        h2.textContent = (`Game over, you lose! Final score: ${computerScore} to ${humanScore}`);
     
     } else if (humanScore > computerScore) {
-    h2.textContent = (`Congratulations, you win!, ${humanScore} to ${computerScore}`);
+        h2.classList.add("human-won");
+        h2.textContent = (`Congratulations, you win! Final score: ${humanScore} to ${computerScore}`);
 }
-    else if (computerScore < humanScore) {
-    h2.textContent = (`Sorry, you lost. ${computerScore} to ${humanScore}`);
+    else if (computerScore > humanScore) {
+        h2.classList.add("computer-won");
+        h2.textContent = (`Sorry, you lost. Final score: ${computerScore} to ${humanScore}`);
     }
-    else if (computerScore == humanScore) {
-    h2.textContent = (`It's a tie! ${computerScore} to ${humanScore}`);
-    }
+    roundResult.appendChild(h2);
 }
-
-//make a function to get input from human
-//allow users to enter choices through window prompt
-//make inputs case insensitive, returning correctly-spelled inputs to lowercase
- /*
-function getHumanChoice() {
-    let userInput = prompt("Enter your choice (Rock, Paper or Scissors);");
-    while (userInput == null) {
-         userInput = prompt("Enter your choice (Rock, Paper or Scissors");
-    } 
-    userInput = userInput.toLowerCase();
-    return userInput;
-}
-    */
 
 //write the logic to get randomly genreated input from computer
 function getComputerChoice() {
@@ -124,9 +108,3 @@ else if (
     return "You lose!";
 }
 }
-
-
-
-//RPS-UI
-//Create three buttons, one for each selection.
-
