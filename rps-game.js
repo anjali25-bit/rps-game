@@ -43,6 +43,7 @@ console.log(playRound(humanSelection,computerSelection));
 console.log(humanScore, computerScore);
 }
 
+//Final score after 5 rounds
     if (humanScore > computerScore) {
         console.log(`Congratulations, you win!, ${humanScore} to ${computerScore}`);
 }
