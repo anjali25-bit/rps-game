@@ -12,7 +12,6 @@ function playGame () {
 //declare the scoring system
 let humanScore = 0;
 let computerScore = 0;
-let round = 1;
 console.log(humanScore);
 console.log(computerScore);
 
@@ -43,7 +42,7 @@ console.log("Computer chose:", computerSelection);
 console.log(playRound(humanSelection,computerSelection));
 console.log(humanScore, computerScore);
 }
-if (i = 5) {
+
     if (humanScore > computerScore) {
         console.log(`Congratulations, you win!, ${humanScore} to ${computerScore}`);
 }
@@ -54,7 +53,7 @@ if (i = 5) {
         console.log (`It's a tie! ${computerScore} to ${humanScore}`);
     }
 }
-}
+
 playGame ();
 
 //make a function to get input from human
