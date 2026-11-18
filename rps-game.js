@@ -57,7 +57,8 @@ function playRound(humanSelection, computerSelection){
         gameWinner ();
 }
 }
-//Final score after 5 rounds
+//Create a function to determine game winner
+//Change console.logs to DOM methods
 function gameWinner() {
     const h2 = document.createElement("h2");
 
