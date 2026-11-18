@@ -11,6 +11,7 @@ let humanScore = 0;
 let computerScore = 0;
 let roundCount = 0;
 
+//Add DOM elements
 const btnRock = document.querySelector(".rock");
 const btnPaper = document.querySelector(".paper");
 const btnScissors = document.querySelector(".scissors");
