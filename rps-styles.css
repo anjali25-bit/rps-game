@@ -1,0 +1,19 @@
+* {
+    background-color: teal;
+}
+.container {
+    display: flex;
+    gap: 45px; 
+}
+
+.text1, .text2, .text3 {
+    padding: 15px;
+    background-color: #90e4c1;
+
+}
+
+.rock, .paper, .scissors {
+    background-color: #90e4c1;
+    border-radius: 8px;
+    box-shadow: 4px 4px 0px black;
+}

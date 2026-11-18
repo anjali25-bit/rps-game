@@ -12,10 +12,14 @@ let roundCount = 0;
 
 //Add DOM elements
 const btnRock = document.querySelector(".rock");
+
 const btnPaper = document.querySelector(".paper");
+
 const btnScissors = document.querySelector(".scissors");
+
 const roundResult = document.querySelector(".result")
-const checkForWinner = document.querySelector (".h2"); 
+const scoreDisplay = document.querySelector(".scoredisplay");
+
 
 btnRock.addEventListener("click", () => {
 playRound('rock',getComputerChoice());
@@ -31,16 +35,19 @@ btnScissors.addEventListener("click", () => {
 playRound('scissors', getComputerChoice());
 });
 
-
 //Function to run each round
 //Create "p" elements and append to roundResult
+const p = document.createElement("p");
+p.style.color = "white"; 
+const endScore = document.createElement("div");
+endScore.classList.add("endScore");
+
 function playRound(humanSelection, computerSelection){
     if (roundCount >= 5) {
         return;
     }    
     roundCount++;
     const result = roundWinner(humanSelection, computerSelection);  
-    const p = document.createElement("p");
     
     if(result === "It's a tie!"){
         p.textContent = "It's a Tie!";
@@ -56,6 +63,10 @@ function playRound(humanSelection, computerSelection){
     if (roundCount === 5) {
         gameWinner ();
 }
+
+    endScore.textContent = `Human: ${humanScore} | Computer: ${computerScore}`;
+    endScore.style.color = "white"; 
+    scoreDisplay.appendChild(endScore);
 }
 //Create a function to determine game winner
 //Change console.logs to DOM methods
@@ -65,20 +76,31 @@ function gameWinner() {
     if (humanScore >= 5) {
         h2.classList.add("human-won");
         h2.textContent = (`Game over, you win! Final score: ${humanScore} to ${computerScore}`);
-    
+        h2.style.color = "white"; 
+
     } else if (computerScore >= 5) {        
         h2.classList.add("computer-won");
         h2.textContent = (`Game over, you lose! Final score: ${computerScore} to ${humanScore}`);
-    
+        h2.style.color = "white"; 
+
     } else if (humanScore > computerScore) {
         h2.classList.add("human-won");
-        h2.textContent = (`Congratulations, you win! Final score: ${humanScore} to ${computerScore}`);
-}
+        h2.textContent = (`Game over, you win! Final score: ${humanScore} to ${computerScore}`);
+        h2.style.color = "white"; 
+    }
     else if (computerScore > humanScore) {
         h2.classList.add("computer-won");
-        h2.textContent = (`Sorry, you lost. Final score: ${computerScore} to ${humanScore}`);
+        h2.textContent = (`Game over, you lost. Final score: ${computerScore} to ${humanScore}`);
+        h2.style.color = "white"; 
     }
+    else if (computerScore == humanScore) {
+        h2.classList.add("game-tie");
+        h2.textContent = (`Game over! It's a tie. Final score: ${computerScore} to ${humanScore}`);
+        h2.style.color = "white"; 
+    }
+    
     roundResult.appendChild(h2);
+
 }
 
 //write the logic to get randomly genreated input from computer
