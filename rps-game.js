@@ -4,7 +4,6 @@ console.log("Hello World");
 const choice = ["rock","paper","scissors"]
 
 //function to play the game
-//loop the round function 5 times 
 //increase the points by 1 for the winner 
 // make a final statement for the winner of the game
 let humanScore = 0;
@@ -33,7 +32,8 @@ playRound('scissors', getComputerChoice());
 });
 
 
-//function to run each round
+//Function to run each round
+//Create "p" elements and append to roundResult
 function playRound(humanSelection, computerSelection){
     if (roundCount >= 5) {
         return;
