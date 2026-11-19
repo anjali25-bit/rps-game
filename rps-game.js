@@ -24,7 +24,7 @@ const gameStart = document.querySelector(".starttext");
 //Specific DOM method to create starting text
 const startText = document.createElement("p");
 startText.style.color = "white";
-startText.textContent = "Play the class game RPS! Click any weapon to begin";
+startText.textContent = "Play the classic game RPS! Click any weapon to begin";
 gameStart.appendChild(startText);
 
 const startText2 = document.createElement("p");
@@ -97,7 +97,7 @@ function gameWinner() {
 
     } else if (computerScore >= 5) {        
         h2.classList.add("computer-won");
-        h2.textContent = (`Game over, you lose! Final score: ${computerScore} - ${humanScore}`);
+        h2.textContent = (`Game over, you lost. Final score: ${computerScore} - ${humanScore}`);
         h2.style.color = "white"; 
 
     } else if (humanScore > computerScore) {
@@ -112,7 +112,7 @@ function gameWinner() {
     }
     else if (computerScore == humanScore) {
         h2.classList.add("game-tie");
-        h2.textContent = (`Game over! It's a tie. Final score: ${computerScore} to ${humanScore}`);
+        h2.textContent = (`Game over! It's a tie! Final score: ${computerScore} to ${humanScore}`);
         h2.style.color = "white"; 
     }
     
