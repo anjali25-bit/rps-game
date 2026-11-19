@@ -3,22 +3,34 @@ console.log("Hello World");
 //global array for RPS choices
 const choice = ["rock","paper","scissors"]
 
-//function to play the game
-//increase the points by 1 for the winner 
-// make a final statement for the winner of the game
+//Inital scores of players
 let humanScore = 0;
 let computerScore = 0;
 let roundCount = 0;
 
-//Add DOM elements
+//Section with DOM elements and methods
 const btnRock = document.querySelector(".rock");
 
 const btnPaper = document.querySelector(".paper");
 
 const btnScissors = document.querySelector(".scissors");
 
-const roundResult = document.querySelector(".result")
 const scoreDisplay = document.querySelector(".scoredisplay");
+
+const roundResult = document.querySelector(".result");
+
+const gameStart = document.querySelector(".starttext");
+
+//Specific DOM method to create starting text
+const startText = document.createElement("p");
+startText.style.color = "white";
+startText.textContent = "Play the class game RPS! Click any weapon to begin";
+gameStart.appendChild(startText);
+
+const startText2 = document.createElement("p");
+startText2.style.color = "white";
+startText2.textContent = "Play 5 rounds";
+gameStart.appendChild(startText2);
 
 
 btnRock.addEventListener("click", () => {
@@ -35,52 +47,57 @@ btnScissors.addEventListener("click", () => {
 playRound('scissors', getComputerChoice());
 });
 
-//Function to run each round
-//Create "p" elements and append to roundResult
+//Create paragraph elements for text and append to roundResult
 const p = document.createElement("p");
 p.style.color = "white"; 
+
 const endScore = document.createElement("div");
 endScore.classList.add("endScore");
 
+//Function to run each round
+//endScore displays scoreboard to user
 function playRound(humanSelection, computerSelection){
+    if (roundCount === 0) {
+        startText.remove();
+        startText2.remove();
+    }
     if (roundCount >= 5) {
         return;
     }    
     roundCount++;
     const result = roundWinner(humanSelection, computerSelection);  
     
-    if(result === "It's a tie!"){
+    if(result === "Tie!"){
         p.textContent = "It's a Tie!";
     }
-    else if(result === "You win!") {
-        p.textContent = `You Win! ${humanSelection} beats ${computerSelection}`;
+    else if(result === "Win!") {
+        p.textContent = `You win! ${humanSelection} beats ${computerSelection}`;
     }
     else {
-        p.textContent = `You Lose! ${computerSelection} beats ${humanSelection}`;
+        p.textContent = `You lose! ${computerSelection} beats ${humanSelection}`;
     }
         roundResult.appendChild(p);
 
     if (roundCount === 5) {
         gameWinner ();
 }
-
     endScore.textContent = `Human: ${humanScore} | Computer: ${computerScore}`;
     endScore.style.color = "white"; 
     scoreDisplay.appendChild(endScore);
 }
-//Create a function to determine game winner
-//Change console.logs to DOM methods
+//Function to determine game winner
+//Uses DOM methods to display game winner
 function gameWinner() {
     const h2 = document.createElement("h2");
 
     if (humanScore >= 5) {
         h2.classList.add("human-won");
-        h2.textContent = (`Game over, you win! Final score: ${humanScore} to ${computerScore}`);
+        h2.textContent = (`Game over, you win! Final score: ${humanScore} - ${computerScore}`);
         h2.style.color = "white"; 
 
     } else if (computerScore >= 5) {        
         h2.classList.add("computer-won");
-        h2.textContent = (`Game over, you lose! Final score: ${computerScore} to ${humanScore}`);
+        h2.textContent = (`Game over, you lose! Final score: ${computerScore} - ${humanScore}`);
         h2.style.color = "white"; 
 
     } else if (humanScore > computerScore) {
@@ -103,21 +120,21 @@ function gameWinner() {
 
 }
 
-//write the logic to get randomly genreated input from computer
+//Logic to get randomly generated input from computer
 function getComputerChoice() {
     return choice[Math.floor(Math.random() * 3)];
 }
 
-//write the function to determine round winner 
+//Function that determines round winner 
 //validate the choices from human and computer inputs
-//make a return statement to the user
+//make a return statement to use in the playRound function
 function roundWinner(humanChoice, computerChoice) {
 if (humanScore === 5) {
-    return 'You win!'
+    return 'Win!'
 } else if (computerScore === 5) {
-    return 'You lose'
+    return 'Lose'
 } else if (humanChoice === computerChoice) {
-    return "It's a tie!";
+    return "Tie!";
 } 
 
 else if (
@@ -126,9 +143,9 @@ else if (
 (humanChoice === "paper" && computerChoice === "rock")
 ) {
     humanScore = humanScore+1; 
-    return "You win!";
+    return "Win!";
 } else {
     computerScore = computerScore+1;
-    return "You lose!";
+    return "Lose!";
 }
 }
